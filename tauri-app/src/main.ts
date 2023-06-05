@@ -24,7 +24,10 @@ function draw() {
   background(100);
   ellipse(x, y, 20);
   for (let i = 0; i < enemys.length; i++) {
+    let c = color(255, 204, 0);
+    fill(c);
     ellipse(enemys[i]["x"],enemys[i]["y"],20)
+    fill("white")
   }
 }
 var ws = new WebSocket("ws://localhost:3000/");
@@ -58,16 +61,28 @@ ws.addEventListener("message", (event) => {
 
 document.addEventListener('keydown', function (event) {
   if (event.key === 'w') {
-    y = y - 5
+    
+    if(y != 10){
+      y = y - 5
+    }
   }
   if (event.key === 's') {
-    y = y + 5
+    if(y != 390){
+      y = y + 5
+    }
+    
   }
   if (event.key === 'a') {
-    x = x - 5
+    if(x != 10){
+      x = x - 5
+    }
+    
   }
   if (event.key === 'd') {
-    x = x + 5
+    if(x != 390){
+      x = x + 5
+    }
+    
   }
   ws.send(JSON.stringify({ type: "movement", data: { x: x, y: y, identifier: identifier } }))
 });

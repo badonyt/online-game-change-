@@ -38,8 +38,8 @@ Bun.serve({
                 
             }
         }, 
-        open(ws) { console.log(ws);ws.subscribe('the-group-chat'); }, // a socket is opened
-        close(ws, code, message) {ws.unsubscribe('the-group-chat'); }, // a socket is closed
+        open(ws) { console.log(ws);ws.subscribe('the-group-chat'); console.log(ws)}, // a socket is opened
+        close(ws, code, message) {ws.unsubscribe('the-group-chat'); console.log(ws)}, // a socket is closed
         //  drain(ws) {}, // the socket is ready to receive more data
     },
     port: 3000
